@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <title>Image Compressor</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Image Compressor</h1>
+        {% if error %}
+            <p class="error">{{ error }}</p>
+        {% endif %}
+        <form action="/process" method="post" enctype="multipart/form-data">
+            <input type="file" name="file" accept="image/*" required>
+            <label for="compression_factor">Compression Factor (1-95):</label>
+            <input type="number" name="compression_factor" id="compression_factor" min="1" max="95" required>
+            <button type="submit">Compress Image</button>
+        </form>
+    </div>
+</body>
+</html>
