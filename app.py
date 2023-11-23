@@ -13,7 +13,7 @@ def process():
     if file.filename == '':
         return render_template('index.html', error='No selected file')
     if 'compression_factor' not in request.form:
-        return render_template('index.html', error='please provide compression factor')
+        return render_template('index.html', error='please provide compression factor and check image format')
     original_image = Image.open(file)
     compression_factor = int(request.form['compression_factor'])
     compressed_image = compress_image(original_image, compression_factor)
